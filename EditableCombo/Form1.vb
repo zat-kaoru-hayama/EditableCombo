@@ -45,6 +45,7 @@ Public Class Form1
             If Not cbc.Items.Contains(e.FormattedValue) Then
                 cbc.Items.Add(e.FormattedValue)
             End If
+            Me.DataGridView1.EndEdit()
             cbc.Value = e.FormattedValue
         End If
     End Sub
