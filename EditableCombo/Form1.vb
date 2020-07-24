@@ -40,12 +40,12 @@ Public Class Form1
     End Sub
 
     Private Sub DataGridView1_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles DataGridView1.CellValidating
-        Dim cmb = TryCast(Me.DataGridView1.CurrentCell, DataGridViewComboBoxCell)
-        If cmb IsNot Nothing Then
-            If Not cmb.Items.Contains(e.FormattedValue) Then
-                cmb.Items.Add(e.FormattedValue)
+        Dim cbc = TryCast(Me.DataGridView1.CurrentCell, DataGridViewComboBoxCell)
+        If cbc IsNot Nothing Then
+            If Not cbc.Items.Contains(e.FormattedValue) Then
+                cbc.Items.Add(e.FormattedValue)
             End If
-            cmb.Value = e.FormattedValue
+            cbc.Value = e.FormattedValue
         End If
     End Sub
 End Class
