@@ -30,4 +30,22 @@ Public Class Form1
             MsgBox(ex.ToString(), MsgBoxStyle.Critical)
         End Try
     End Sub
+
+    Private Sub DataGridView1_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DataGridView1.EditingControlShowing
+        Dim cmb = TryCast(Me.DataGridView1.CurrentCell, DataGridViewComboBoxCell)
+        If cmb IsNot Nothing Then
+            Dim cb = CType(e.Control, DataGridViewComboBoxEditingControl)
+            cb.DropDownStyle = ComboBoxStyle.DropDown
+        End If
+    End Sub
+
+    Private Sub DataGridView1_CellValidating(sender As Object, e As DataGridViewCellValidatingEventArgs) Handles DataGridView1.CellValidating
+        Dim cmb = TryCast(Me.DataGridView1.CurrentCell, DataGridViewComboBoxCell)
+        If cmb IsNot Nothing Then
+            If Not cmb.Items.Contains(e.FormattedValue) Then
+                cmb.Items.Add(e.FormattedValue)
+            End If
+            cmb.Value = e.FormattedValue
+        End If
+    End Sub
 End Class
